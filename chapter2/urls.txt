@@ -1,0 +1,5 @@
+https://www.percona.com/blog/
+https://www.percona.com/blog/page/2/
+https://www.percona.com/software/mysql-database/percona-xtrabackup
+https://www.percona.com/resources/technical-presentations
+https://www.percona.com/blog/2006/09/06/slow-query-log-analyzes-tools/
