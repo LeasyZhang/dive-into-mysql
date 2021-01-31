@@ -38,3 +38,21 @@ select * from mysql.health_check;
 ```sql
 update mysql.health_check set t_modified = now();
 ```
+
+## Inner monitoring table
+
+This approach may reduce mysql performace at 10 percent.
+
+- Turn on Redo log monitoring
+
+```sql
+update setup_instruments set enabled = 'YES', timed='YES' where name like '%wait/io/file/innodb/innodb_log_file%';
+```
+
+Check IO request timeout
+
+```sql
+select event_name, MAX_TIMER_WAIT from performance_schema.file_summary_by_event_name where event_name in ('wait/io/file/innodb/innodb_log_file', 'wait/io/file/sql/binlog') and MAX_TIMER_WAIT > 200 * 1000000000;
+```
+
+Remember to truncate this table after check and collect database performance next time.
